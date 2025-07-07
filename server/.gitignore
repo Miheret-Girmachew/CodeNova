@@ -1,0 +1,4 @@
+.env
+node_modules/
+# Ignore server credentials
+/server/codenova-service-account.json

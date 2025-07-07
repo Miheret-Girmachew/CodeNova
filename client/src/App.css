@@ -1,0 +1,58 @@
+/* App.css */
+
+/*
+  INFO: The previous styles for react-pdf and pptx-preview have been removed
+  from this global file.
+  
+  BEST PRACTICE: Styles for specific libraries should live with the components
+  that use them, or be imported only on the pages where they are needed.
+  This keeps the main stylesheet clean and fast.
+*/
+
+/* 1. FANCY SCROLLBAR */
+/* For Webkit browsers like Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 20px;
+  border: 3px solid var(--background);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--background);
+}
+
+
+/* 2. CODE BLOCK STYLING */
+/* This will style any <pre> and <code> tags beautifully */
+pre,
+code {
+  font-family: 'Fira Code', monospace;
+}
+
+pre {
+  background-color: var(--card) !important; /* Use important to override other potential styles */
+  border: 1px solid var(--border);
+  padding: 1.5em;
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.6;
+  margin: 1em 0;
+}
+
+/* Inline code, like `<span>` */
+:not(pre) > code {
+  background-color: var(--border);
+  color: var(--accent);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  font-size: 0.85em;
+}
