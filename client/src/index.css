@@ -1,74 +1,108 @@
-/* src/index.css */
+@import "tailwindcss";
 
-/* ✅ Use standard Tailwind directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 1. Register Plugins */
+@plugin "tailwindcss-animate";
 
+/* 2. Define the Theme */
+@theme {
+  /* Colors */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  /* Border Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Fonts */
+  --font-serif: "Georgia", "Times New Roman", serif;
+  --font-sans: "Inter", "system-ui", "sans-serif";
+}
+
+/* 3. Define Variables & Base Styles */
 @layer base {
-  /* 
-    CODE-NOVA THEME
-    Default Mode is now defined in .dark, to match Tailwind's darkMode: 'class'
-  */
-  :root, .light {
+  :root {
     --radius: 0.75rem;
 
     /* Palette: Solarized Day (Light) */
-    --background: oklch(0.98 0.005 255);      /* Cloud White: #f8fafc */
-    --foreground: oklch(0.22 0.021 258.32);   /* Midnight Blue: #1e293b */
-    --card: oklch(1 0 0);                     /* Bright Sky: #ffffff */
-    --card-foreground: oklch(0.22 0.021 258.32); /* Midnight Blue: #1e293b */
-    --popover: oklch(1 0 0);                  /* Bright Sky: #ffffff */
-    --popover-foreground: oklch(0.22 0.021 258.32); /* Midnight Blue: #1e293b */
-    --primary: oklch(0.59 0.22 284.9);        /* Vivid Violet: #7c3aed */
-    --primary-foreground: oklch(0.98 0.005 255); /* Cloud White: #f8fafc */
-    --secondary: oklch(0.95 0.008 256.5);     /* Light Gray: #eef2f7 */
-    --secondary-foreground: oklch(0.22 0.021 258.32); /* Midnight Blue: #1e293b */
-    --muted: oklch(0.95 0.008 256.5);         /* Light Gray: #eef2f7 */
-    --muted-foreground: oklch(0.42 0.02 258); /* Graphite Gray: #475569 */
-    --accent: oklch(0.72 0.16 165.7);         /* Vibrant Teal: #14b8a6 */
-    --accent-foreground: oklch(0.98 0.005 255); /* Cloud White: #f8fafc */
-    --destructive: oklch(0.65 0.25 15);       /* Danger Red: #ef4444 */
-    --border: oklch(0.93 0.01 257.34);        /* Horizon Gray: #e2e8f0 */
-    --input: oklch(0.93 0.01 257.34);         /* Horizon Gray: #e2e8f0 */
-    --ring: oklch(0.65 0.21 282.8);           /* Cyber Purple: #8b5cf6 */
+    --background: oklch(0.98 0.005 255);
+    --foreground: oklch(0.22 0.021 258.32);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.22 0.021 258.32);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.22 0.021 258.32);
+    --primary: oklch(0.59 0.22 284.9);
+    --primary-foreground: oklch(0.98 0.005 255);
+    --secondary: oklch(0.95 0.008 256.5);
+    --secondary-foreground: oklch(0.22 0.021 258.32);
+    --muted: oklch(0.95 0.008 256.5);
+    --muted-foreground: oklch(0.42 0.02 258);
+    --accent: oklch(0.72 0.16 165.7);
+    --accent-foreground: oklch(0.98 0.005 255);
+    --destructive: oklch(0.65 0.25 15);
+    --destructive-foreground: oklch(0.98 0.005 255);
+    --border: oklch(0.93 0.01 257.34);
+    --input: oklch(0.93 0.01 257.34);
+    --ring: oklch(0.65 0.21 282.8);
   }
 
-  /* 
-    This class will be added to <html> by your ThemeProvider
-  */
   .dark {
-    --radius: 0.75rem;
-
     /* Palette: Cosmic Night (Dark) */
-    --background: oklch(0.15 0.019 258.91);      /* Deep Space Navy: #0f172a */
-    --foreground: oklch(0.93 0.01 257.34);      /* Starlight White: #e2e8f0 */
-    --card: oklch(0.22 0.021 258.32);           /* Nebula Slate: #1e293b */
-    --card-foreground: oklch(0.93 0.01 257.34); /* Starlight White: #e2e8f0 */
-    --popover: oklch(0.12 0.017 259.3);         /* Darker Popover: #0b1220 */
-    --popover-foreground: oklch(0.93 0.01 257.34); /* Starlight White: #e2e8f0 */
-    --primary: oklch(0.65 0.21 282.8);          /* Cyber Purple: #8b5cf6 */
-    --primary-foreground: oklch(0.98 0.005 255); /* Nearly White: #f7f9fc */
-    --secondary: oklch(0.30 0.023 258.1);       /* Muted Slate: #313e54 */
-    --secondary-foreground: oklch(0.93 0.01 257.34); /* Starlight White: #e2e8f0 */
-    --muted: oklch(0.30 0.023 258.1);           /* Muted Slate: #313e54 */
-    --muted-foreground: oklch(0.68 0.015 257.7);/* Galaxy Gray: #94a3b8 */
-    --accent: oklch(0.82 0.16 168.8);           /* Quantum Green: #34d399 */
-    --accent-foreground: oklch(0.12 0.017 259.3);  /* Deep Space Navy: #0f172a */
-    --destructive: oklch(0.65 0.24 21.6);       /* Red Alert: #f43f5e */
-    --border: oklch(0.32 0.023 258.33);         /* Astro Gray: #334155 */
-    --input: oklch(0.32 0.023 258.33);          /* Astro Gray: #334155 */
-    --ring: oklch(0.70 0.20 283);               /* Lighter Purple Ring: #a78bfa */
+    --background: oklch(0.15 0.019 258.91);
+    --foreground: oklch(0.93 0.01 257.34);
+    --card: oklch(0.22 0.021 258.32);
+    --card-foreground: oklch(0.93 0.01 257.34);
+    --popover: oklch(0.12 0.017 259.3);
+    --popover-foreground: oklch(0.93 0.01 257.34);
+    --primary: oklch(0.65 0.21 282.8);
+    --primary-foreground: oklch(0.98 0.005 255);
+    --secondary: oklch(0.30 0.023 258.1);
+    --secondary-foreground: oklch(0.93 0.01 257.34);
+    --muted: oklch(0.30 0.023 258.1);
+    --muted-foreground: oklch(0.68 0.015 257.7);
+    --accent: oklch(0.82 0.16 168.8);
+    --accent-foreground: oklch(0.12 0.017 259.3);
+    --destructive: oklch(0.65 0.24 21.6);
+    --destructive-foreground: oklch(0.98 0.005 255);
+    --border: oklch(0.32 0.023 258.33);
+    --input: oklch(0.32 0.023 258.33);
+    --ring: oklch(0.70 0.20 283);
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: var(--border, currentColor);
   }
+  
   body {
-    @apply bg-background text-foreground;
-    /* Fancy transition for color changes */
-    @apply transition-colors duration-300; 
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans); /* Sets global font */
+    transition: color 0.3s, background-color 0.3s;
   }
 }
